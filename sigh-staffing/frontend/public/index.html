@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sigh Staffing – Talent Sourcing Experts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c8922a;--gold-light:#e8b84b;--navy:#12243a;--navy2:#1a3456;
+  --cream:#faf6f0;--warm:#f5ede0;--terracotta:#d4875a;--terracotta2:#c97a4a;
+  --white:#ffffff;--text:#2c2c2c;--gray:#666;--border:#e0d5c8;
+  --success:#10b981;--error:#ef4444;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--text);background:var(--white)}
+.topbar{background:var(--terracotta);padding:.45rem 2rem;display:flex;align-items:center;justify-content:space-between;font-size:.82rem;color:var(--white)}
+.topbar a{color:var(--white);text-decoration:none;margin-right:1.5rem}
+.topbar-socials a{margin-right:0;margin-left:.8rem}
+nav{background:var(--white);padding:.6rem 2.5rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,.08);position:sticky;top:0;z-index:200}
+.logo-wrap{display:flex;align-items:center;gap:.8rem}
+.logo-icon{width:60px;height:60px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--white);font-weight:700;box-shadow:0 3px 12px rgba(200,146,42,.35)}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold);line-height:1}
+.logo-text small{display:block;font-family:'Nunito',sans-serif;font-size:.6rem;font-weight:600;color:var(--terracotta);letter-spacing:3px;text-transform:uppercase;margin-top:2px}
+nav ul{list-style:none;display:flex;gap:1.5rem;align-items:center}
+nav ul a{text-decoration:none;font-size:.85rem;font-weight:600;color:var(--text);transition:color .2s;position:relative;padding-bottom:4px}
+nav ul a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .25s}
+nav ul a:hover,nav ul a.active{color:var(--gold)}
+nav ul a:hover::after,nav ul a.active::after{width:100%}
+.hero{position:relative;min-height:500px;background:linear-gradient(105deg,rgba(18,36,58,.88) 0%,rgba(18,36,58,.4) 55%,rgba(18,36,58,.1) 100%),url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80') center/cover no-repeat;display:flex;align-items:center;padding:4rem 5rem}
+.hero-content{max-width:540px;animation:fadeUp .7s ease both}
+.hero-tag{display:inline-block;background:var(--gold);color:var(--white);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.3rem .9rem;border-radius:3px;margin-bottom:1.2rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);color:var(--white);line-height:1.18;margin-bottom:1rem}
+.hero h1 em{color:var(--gold-light);font-style:normal}
+.hero p{color:rgba(255,255,255,.8);font-size:1rem;line-height:1.7;margin-bottom:1.8rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--white);padding:.75rem 1.6rem;border-radius:5px;text-decoration:none;font-weight:700;font-size:.88rem;transition:all .2s;border:none;cursor:pointer;display:inline-block}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);padding:.75rem 1.6rem;border-radius:5px;text-decoration:none;font-weight:700;font-size:.88rem;border:2px solid rgba(255,255,255,.6);transition:all .2s;display:inline-block}
+.btn-outline:hover{background:rgba(255,255,255,.12)}
+section{padding:5rem 2rem}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:.6rem;display:block}
+.section-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.section-line{width:50px;height:3px;background:var(--gold);margin-bottom:1.8rem}
+.about{background:var(--cream)}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center}
+.big-logo{width:180px;height:180px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 40px rgba(200,146,42,.3);color:var(--white);margin:0 auto}
+.big-logo-icon{font-size:2.8rem}
+.big-logo-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;text-align:center;margin-top:.3rem}
+.big-logo-tag{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin-top:.15rem}
+.about-industries{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem .8rem;margin:.8rem 0 1rem;list-style:none}
+.about-industries li{font-size:.82rem;font-weight:600;color:var(--gold);padding-left:1rem;position:relative}
+.about-industries li::before{content:'•';position:absolute;left:0;color:var(--terracotta)}
+.about p,.mission p{font-size:.92rem;line-height:1.8;color:var(--gray);margin-bottom:.7rem}
+.mission-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
+.mission-img-box{background:linear-gradient(135deg,var(--navy),var(--navy2));height:260px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);text-align:center;padding:2rem;box-shadow:0 10px 40px rgba(0,0,0,.15)}
+.mission-img-box h3{font-family:'Playfair Display',serif;font-size:2rem;border:3px solid rgba(255,255,255,.5);padding:1rem 1.5rem}
+.mission-img-box p{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;margin-top:.7rem;color:var(--gold-light)}
+.signature{margin-top:1.3rem;font-weight:600;color:var(--navy);font-size:.9rem}
+.services-inner{max-width:1100px;margin:0 auto;text-align:center}
+.services-inner .section-line{margin:0 auto 2.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;text-align:left}
+.service-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .25s,transform .2s}
+.service-card:hover{box-shadow:0 10px 40px rgba(0,0,0,.12);transform:translateY(-4px)}
+.svc-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+.svc-img.blue{background:linear-gradient(135deg,#1a3456,#2563eb)}
+.svc-img.green{background:linear-gradient(135deg,#1a4a2e,#10b981)}
+.svc-img.warm{background:linear-gradient(135deg,#4a2010,#c97a4a)}
+.service-card h3{padding:1rem 1.2rem .3rem;font-size:.98rem;font-weight:700;color:var(--navy);font-family:'Playfair Display',serif}
+.service-card p{padding:0 1.2rem 1.2rem;font-size:.83rem;color:var(--gray);line-height:1.6}
+/* Resume form */
+.resume-section{background:var(--terracotta);padding:4rem 2rem}
+.resume-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr 1fr;gap:2rem;align-items:center}
+.resume-left,.resume-right{color:var(--white);text-align:center}
+.resume-left h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.3rem}
+.resume-left p{font-size:.82rem;opacity:.85;font-style:italic}
+.resume-form-box{background:rgba(255,255,255,.13);border-radius:10px;padding:2rem}
+.resume-form-box h2{color:var(--white);font-family:'Playfair Display',serif;font-size:1.3rem;text-align:center;margin-bottom:1.4rem}
+.r-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+.rf-input{background:transparent;border:none;border-bottom:1.5px solid rgba(255,255,255,.5);padding:.45rem 0;font-family:'Nunito',sans-serif;font-size:.85rem;color:var(--white);width:100%;outline:none;transition:border-color .2s}
+.rf-input::placeholder{color:rgba(255,255,255,.65)}
+.rf-input:focus{border-bottom-color:var(--white)}
+.file-row{margin:.8rem 0;display:flex;align-items:center;gap:.7rem}
+.file-label{background:rgba(255,255,255,.2);color:var(--white);padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.78rem;font-weight:600;border:1px solid rgba(255,255,255,.35)}
+.file-label:hover{background:rgba(255,255,255,.3)}
+#resumeFile{display:none}
+#fileNameDisplay{color:rgba(255,255,255,.7);font-size:.78rem}
+.r-submit{width:100%;background:var(--white);color:var(--terracotta);border:none;padding:.8rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:1px;text-transform:uppercase;border-radius:5px;cursor:pointer;margin-top:.5rem;transition:all .2s}
+.r-submit:hover{background:var(--cream);transform:translateY(-2px)}
+.resume-right .mail-icon{font-size:2rem;margin-bottom:.4rem}
+.resume-right a{color:var(--white);text-decoration:none;font-weight:700}
+/* Opportunities */
+.opp-inner{max-width:900px;margin:0 auto}
+.opp-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.6rem;margin-bottom:1.3rem;border-left:4px solid var(--gold);transition:box-shadow .2s}
+.opp-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.1)}
+.opp-date{font-size:.75rem;color:var(--gray);margin-bottom:.4rem}
+.opp-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.opp-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.7rem}
+.opp-tag{background:var(--warm);color:var(--terracotta);font-size:.72rem;font-weight:700;padding:.2rem .6rem;border-radius:20px}
+.opp-desc{font-size:.86rem;color:var(--gray);margin-bottom:.7rem;line-height:1.6}
+.opp-list{list-style:none;padding:0;margin-bottom:.9rem}
+.opp-list li{font-size:.83rem;color:var(--text);padding:.2rem 0 .2rem 1.2rem;position:relative}
+.opp-list li::before{content:'◆';position:absolute;left:0;color:var(--terracotta);font-size:.55rem;top:.4rem}
+.opp-apply{display:inline-block;background:var(--gold);color:var(--white);padding:.45rem 1.2rem;border-radius:5px;text-decoration:none;font-size:.8rem;font-weight:700;transition:background .2s}
+.opp-apply:hover{background:var(--gold-light)}
+.opp-loading{text-align:center;padding:2rem;color:var(--gray)}
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;max-width:1100px;margin:0 auto}
+.testi-card{background:var(--white);border-radius:10px;padding:1.8rem;border:1px solid var(--border)}
+.testi-quote{font-size:2rem;color:var(--terracotta);opacity:.4;line-height:.8;margin-bottom:.7rem;font-family:Georgia,serif}
+.testi-text{font-size:.86rem;line-height:1.75;color:var(--gray);margin-bottom:1rem}
+.testi-name{font-weight:700;color:var(--navy);font-size:.88rem}
+/* Contact */
+.contact-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;min-height:480px;box-shadow:0 10px 40px rgba(0,0,0,.1);border-radius:12px;overflow:hidden}
+.contact-left{background:var(--terracotta);color:var(--white);padding:3rem 2.2rem}
+.contact-left h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.4rem}
+.contact-left p{font-size:.85rem;opacity:.85;line-height:1.6;margin-bottom:1.8rem}
+.c-detail{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.3rem}
+.c-icon{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.c-text{font-size:.83rem;line-height:1.6;opacity:.9}
+.c-text strong{display:block;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;opacity:.65;margin-bottom:.1rem}
+.socials-row{display:flex;gap:.6rem;margin-top:1.8rem}
+.soc-btn{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none;transition:background .2s}
+.soc-btn:hover{background:rgba(255,255,255,.2)}
+.contact-right{background:var(--white);padding:3rem 2.5rem}
+.contact-right h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:.3rem}
+.contact-right>p{font-size:.83rem;color:var(--gray);margin-bottom:1.8rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem}
+.cf-group{display:flex;flex-direction:column;gap:.25rem}
+.cf-group label{font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
+.cf-group input,.cf-group textarea{border:none;border-bottom:1.5px solid var(--border);padding:.45rem 0;font-family:'Nunito',sans-serif;font-size:.88rem;color:var(--text);outline:none;background:transparent;transition:border-color .2s;resize:none}
+.cf-group input:focus,.cf-group textarea:focus{border-bottom-color:var(--gold)}
+.cf-full{grid-column:1/-1}
+.send-btn{background:var(--terracotta);color:var(--white);border:none;padding:.8rem 2.2rem;font-family:'Nunito',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;border-radius:5px;cursor:pointer;transition:all .2s}
+.send-btn:hover{background:var(--terracotta2);transform:translateY(-2px)}
+footer{background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:1.3rem;font-size:.8rem}
+footer a{color:var(--gold);text-decoration:none}
+/* Toast */
+.toast{position:fixed;bottom:2rem;right:2rem;padding:1rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;z-index:9999;transform:translateY(100px);opacity:0;transition:all .35s;max-width:360px}
+.toast.success{background:var(--success);color:#fff}
+.toast.error{background:var(--error);color:#fff}
+.toast.show{transform:translateY(0);opacity:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .55s,transform .55s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  .about-inner,.mission-inner,.services-grid,.testi-grid,.resume-inner,.contact-inner{grid-template-columns:1fr}
+  .hero{padding:3rem 1.5rem}
+  nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <a href="tel:+919876543210">📞 +91 98765 43210</a>
+    <a href="mailto:hr@sighstaffing.com">✉ hr@sighstaffing.com</a>
+  </div>
+  <div class="topbar-socials">
+    <a href="#">f</a><a href="#">𝕏</a><a href="#">📸</a><a href="#">in</a><a href="#">▶</a>
+  </div>
+</div>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">S</div>
+    <div class="logo-text">SIGH STAFFING<small>— Organization —</small></div>
+  </div>
+  <ul>
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#mission">Our Mission</a></li>
+    <li><a href="#services">Our Services</a></li>
+    <li><a href="#resume">Send Resume</a></li>
+    <li><a href="#opportunities">Current Opportunities</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-tag">Trusted Since 2015</span>
+    <h1>Don't Get Confused!<br>We Are Here to<br><em>Link You with<br>Your Career</em></h1>
+    <p>Sigh Staffing is your one-stop solution for all manpower & employment requirements across India.</p>
+    <div class="hero-btns">
+      <a href="#opportunities" class="btn-primary">View Current Jobs</a>
+      <a href="#resume" class="btn-outline">Upload Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="fade-in" style="text-align:center">
+      <div class="big-logo">
+        <div class="big-logo-icon">⚜</div>
+        <div class="big-logo-name">SIGH<br>STAFFING</div>
+        <div class="big-logo-tag">— Organization —</div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <span class="section-label">About Us</span>
+      <h2 class="section-title">Welcome to Sigh Staffing</h2>
+      <div class="section-line"></div>
+      <p>"Sigh Staffing" is one-stop solution for all your manpower & employment requirements. We act as a perfect mediator between employer & the prospective job seeker by bringing them both on the same page and fulfilling their respective needs.</p>
+      <p>We cater to all industries at PAN India level. Our expertise enables excellent & customised recruitment solutions. We maintain high level of integrity and follow ethical practices. We cater to all Industries:-</p>
+      <ul class="about-industries">
+        <li>Manufacturing</li><li>Real Estate</li><li>Pharmaceuticals</li>
+        <li>ITES, BPO, KPO</li><li>Education</li><li>IELTS & Immigration</li>
+        <li>Media & Entertainment</li><li>Events & Hospitality</li><li>FMCG</li>
+        <li>Retail</li><li>Telecommunications</li><li>Farming & Agriculture</li>
+      </ul>
+      <p>We have strong presence on all social platforms helping us connect with talent in urban, semi-urban and rural areas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission" style="background:var(--white);padding:5rem 2rem">
+  <div class="mission-inner">
+    <div class="fade-in">
+      <div class="mission-img-box">
+        <h3>OUR<br>MISSION</h3>
+        <p>Empowering Careers</p>
+      </div>
+    </div>
+    <div class="fade-in">
+      <h2 class="section-title">Our Mission</h2>
+      <div class="section-line"></div>
+      <p>At Sigh Staffing, our mission is to create opportunities and unlock potential by connecting the right talent with the right opportunities. We are a dependable partner to both employers and jobseekers.</p>
+      <p>We bridge the gap with expertise, dedication, and commitment. We ensure job seekers find fulfilling roles, and employers access the right talent at the right time.</p>
+      <p>Our company is built on trust, integrity, and service. Every placement we facilitate represents a new beginning and a step toward success.</p>
+      <p>We remain committed to empowering careers and contributing to a thriving workforce.</p>
+      <div class="signature">Regards,<br>Founder, Sigh Staffing Organization.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--cream);padding:5rem 2rem">
+  <div class="services-inner">
+    <span class="section-label">Services We Offer</span>
+    <h2 class="section-title">Our Services</h2>
+    <div class="section-line"></div>
+    <div class="services-grid">
+      <div class="service-card fade-in"><div class="svc-img blue">🎯</div><h3>Recruitment Services</h3><p>End-to-end recruitment tailored to your needs. We source, screen, and place the best-fit candidates across all industries.</p></div>
+      <div class="service-card fade-in"><div class="svc-img green">🤝</div><h3>Manpower Provider</h3><p>Skilled and semi-skilled manpower across India, helping organisations scale their workforce quickly without compromising quality.</p></div>
+      <div class="service-card fade-in"><div class="svc-img warm">💼</div><h3>Career Consulting</h3><p>Expert career guidance for job seekers at every stage. We help you identify opportunities, build your profile, and land the role you deserve.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section class="resume-section" id="resume">
+  <div class="resume-inner">
+    <div class="resume-left">
+      <h3>Sigh Staffing</h3>
+      <p>"Talent Sourcing Experts"</p>
+    </div>
+    <div class="resume-form-box">
+      <h2>Upload Resume</h2>
+      <div class="r-row">
+        <input class="rf-input" id="r-name" type="text" placeholder="Name" required/>
+        <input class="rf-input" id="r-mobile" type="tel" placeholder="Mobile Number" required/>
+        <input class="rf-input" id="r-email" type="email" placeholder="Email Address" required/>
+      </div>
+      <div class="r-row">
+        <input class="rf-input" id="r-position" type="text" placeholder="Position Applied For" required/>
+        <input class="rf-input" id="r-jobcode" type="text" placeholder="Job Code"/>
+        <input class="rf-input" id="r-location" type="text" placeholder="Location"/>
+      </div>
+      <div class="file-row">
+        <label class="file-label" for="resumeFile">Choose File</label>
+        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx"/>
+        <span id="fileNameDisplay">No file chosen</span>
+      </div>
+      <button class="r-submit" onclick="submitResume()">SUBMIT</button>
+    </div>
+    <div class="resume-right">
+      <div class="mail-icon">✉</div>
+      <a href="mailto:hr@sighstaffing.com">hr@sighstaffing.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITIES -->
+<section style="background:var(--cream);padding:5rem 2rem" id="opportunities">
+  <div class="opp-inner">
+    <span class="section-label">Now Hiring</span>
+    <h2 class="section-title">Current Opportunities</h2>
+    <div class="section-line"></div>
+    <div id="jobsContainer"><div class="opp-loading">Loading opportunities…</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:var(--warm);padding:5rem 2rem" id="testimonials">
+  <div style="max-width:1100px;margin:0 auto">
+    <span class="section-label" style="text-align:center;display:block">Feedback</span>
+    <h2 class="section-title" style="text-align:center">Testimonials</h2>
+    <div class="section-line" style="margin:0 auto 2.5rem"></div>
+    <div class="testi-grid">
+      <div class="testi-card fade-in"><div class="testi-quote">❝❝</div><p class="testi-text">Highly satisfied with the services provided by Sigh Staffing! They were efficient, professional, and dedicated to helping me secure a job that matched my skills. The staff was friendly and guided me through the entire process with ease. I highly recommend their services.</p><div class="testi-name">Shabeer Shah</div></div>
+      <div class="testi-card fade-in"><div class="testi-quote">❝❝</div><p class="testi-text">Very satisfied with the services. Very polite and professional tone I observed. If you are a job seeker, you can blindly trust them to find one for you. They matched me with the perfect role within a week!</p><div class="testi-name">Abhishek Goyal</div></div>
+      <div class="testi-card fade-in"><div class="testi-quote">❝❝</div><p class="testi-text">Thank you so much for telling me about the job opening. I really appreciate all of your support. I'm very grateful for your help in my search. The team truly went above and beyond to assist me.</p><div class="testi-name">Mohd. Majid</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section style="padding:5rem 2rem;background:var(--white)" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <h2>Contact Us</h2>
+      <p>Kindly connect with us as per your convenience.</p>
+      <div class="c-detail"><div class="c-icon">📍</div><div class="c-text"><strong>Address</strong>New Bank Colony, Mullanpur Dakha,<br>Ludhiana, Punjab 141101</div></div>
+      <div class="c-detail"><div class="c-icon">📞</div><div class="c-text"><strong>Phone</strong>+91 98765 43210</div></div>
+      <div class="c-detail"><div class="c-icon">✉</div><div class="c-text"><strong>Email</strong>hr@sighstaffing.com</div></div>
+      <div class="c-detail"><div class="c-icon">📄</div><div class="c-text"><strong>GST No.</strong>03AZIPMI885CIZJ</div></div>
+      <div class="socials-row">
+        <a href="#" class="soc-btn">f</a><a href="#" class="soc-btn">𝕏</a>
+        <a href="#" class="soc-btn">📸</a><a href="#" class="soc-btn">in</a><a href="#" class="soc-btn">▶</a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h2>Get in touch</h2>
+      <p>If you have any query, feel free to send us a message</p>
+      <div class="cf-row">
+        <div class="cf-group"><label>Full Name</label><input id="c-name" type="text" placeholder="Name"/></div>
+        <div class="cf-group"><label>Email Address</label><input id="c-email" type="email" placeholder="Email"/></div>
+        <div class="cf-group cf-full"><label>Subject</label><input id="c-subject" type="text" placeholder="Subject"/></div>
+        <div class="cf-group cf-full"><label>Message</label><textarea id="c-message" rows="4" placeholder="Message"></textarea></div>
+      </div>
+      <button class="send-btn" onclick="submitContact()">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Sigh Staffing Organization. All rights reserved. &nbsp;|&nbsp;
+  <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="/admin.html">Admin</a>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = ''; // Empty = same origin (backend serves frontend)
+
+// ── Toast ──────────────────────────────────────────────────────────
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ── Load Jobs from API ─────────────────────────────────────────────
+async function loadJobs() {
+  try {
+    const res  = await fetch(`${API}/api/jobs`);
+    const data = await res.json();
+    const container = document.getElementById('jobsContainer');
+    if (!data.success || !data.data.length) {
+      container.innerHTML = '<p style="color:var(--gray);text-align:center">No current openings. Check back soon!</p>';
+      return;
+    }
+    container.innerHTML = data.data.filter(j => j.active).map(job => `
+      <div class="opp-card">
+        <div class="opp-date">Posted on ${new Date(job.postedAt).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}</div>
+        <div class="opp-title">${job.title}</div>
+        <div class="opp-meta">
+          <span class="opp-tag">📍 ${job.location}</span>
+          <span class="opp-tag">💼 ${job.type}</span>
+          <span class="opp-tag">🏷 ${job.category}</span>
+          <span class="opp-tag">💰 ${job.salary}</span>
+        </div>
+        <div class="opp-desc">${job.description}</div>
+        ${job.requirements?.length ? `<strong style="font-size:.82rem;color:var(--navy)">Requirements:</strong>
+        <ul class="opp-list">${job.requirements.map(r=>`<li>${r}</li>`).join('')}</ul>` : ''}
+        ${job.responsibilities?.length ? `<strong style="font-size:.82rem;color:var(--navy)">Key Responsibilities:</strong>
+        <ul class="opp-list">${job.responsibilities.map(r=>`<li>${r}</li>`).join('')}</ul>` : ''}
+        <a href="#resume" class="opp-apply">Apply Now</a>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('jobsContainer').innerHTML = '<p style="color:var(--gray);text-align:center">Unable to load jobs. Please try again later.</p>';
+  }
+}
+
+// ── Submit Resume ──────────────────────────────────────────────────
+async function submitResume() {
+  const name     = document.getElementById('r-name').value.trim();
+  const mobile   = document.getElementById('r-mobile').value.trim();
+  const email    = document.getElementById('r-email').value.trim();
+  const position = document.getElementById('r-position').value.trim();
+  const file     = document.getElementById('resumeFile').files[0];
+
+  if (!name || !mobile || !email || !position)
+    return showToast('Please fill in all required fields.', 'error');
+  if (!file)
+    return showToast('Please choose a resume file.', 'error');
+
+  const fd = new FormData();
+  fd.append('name', name);
+  fd.append('mobile', mobile);
+  fd.append('email', email);
+  fd.append('position', position);
+  fd.append('jobCode', document.getElementById('r-jobcode').value);
+  fd.append('location', document.getElementById('r-location').value);
+  fd.append('resume', file);
+
+  try {
+    const res  = await fetch(`${API}/api/resume`, { method: 'POST', body: fd });
+    const data = await res.json();
+    if (data.success) {
+      showToast(data.message, 'success');
+      ['r-name','r-mobile','r-email','r-position','r-jobcode','r-location'].forEach(id => document.getElementById(id).value='');
+      document.getElementById('resumeFile').value='';
+      document.getElementById('fileNameDisplay').textContent='No file chosen';
+    } else {
+      showToast(data.errors?.[0]?.msg || data.message, 'error');
+    }
+  } catch(e) { showToast('Server error. Please try again.', 'error'); }
+}
+
+// ── Submit Contact ─────────────────────────────────────────────────
+async function submitContact() {
+  const body = {
+    name:    document.getElementById('c-name').value.trim(),
+    email:   document.getElementById('c-email').value.trim(),
+    subject: document.getElementById('c-subject').value.trim(),
+    message: document.getElementById('c-message').value.trim()
+  };
+  if (!body.name || !body.email || !body.subject || !body.message)
+    return showToast('Please fill in all contact fields.', 'error');
+
+  try {
+    const res  = await fetch(`${API}/api/contact`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    const data = await res.json();
+    if (data.success) {
+      showToast(data.message, 'success');
+      ['c-name','c-email','c-subject','c-message'].forEach(id => document.getElementById(id).value='');
+    } else {
+      showToast(data.errors?.[0]?.msg || data.message, 'error');
+    }
+  } catch(e) { showToast('Server error. Please try again.', 'error'); }
+}
+
+// ── File input label ───────────────────────────────────────────────
+document.getElementById('resumeFile').addEventListener('change', function() {
+  document.getElementById('fileNameDisplay').textContent = this.files[0]?.name || 'No file chosen';
+});
+
+// ── Scroll animation ───────────────────────────────────────────────
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .12 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// ── Smooth scroll + active nav ─────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+loadJobs();
+</script>
+</body>
+</html>
