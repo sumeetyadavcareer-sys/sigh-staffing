@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
+const fs = require('fs');
 const rateLimit = require('express-rate-limit');
 
 const contactRoutes = require('./routes/contact');
@@ -12,6 +13,12 @@ const adminRoutes   = require('./routes/admin');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
+
+// ── Auto-create uploads and data folders if they don't exist ──────
+const uploadsDir = path.join(__dirname, 'uploads');
+const dataDir    = path.join(__dirname, 'data');
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+if (!fs.existsSync(dataDir))    fs.mkdirSync(dataDir,    { recursive: true });
 
 // ── Security ──────────────────────────────────────────────────────
 app.use(helmet({ contentSecurityPolicy: false }));
