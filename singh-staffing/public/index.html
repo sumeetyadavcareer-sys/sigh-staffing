@@ -201,7 +201,7 @@ footer a{color:var(--gold);text-decoration:none}
 <div class="topbar">
   <div>
     <a href="tel:+918360933008">📞 +91 83609 33008</a>
-    <a href="/cdn-cgi/l/email-protection#71181f171e3102181f16190205101717181f165f121e1c">✉ <span class="__cf_email__" data-cfemail="ed84838b82ad9e84838a859e998c8b8b84838ac38e8280">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#71181f171e3102181f16190205101717181f165f121e1c">✉ info@singhstaffing.com</a>
   </div>
 
 </div>
@@ -392,23 +392,22 @@ footer a{color:var(--gold);text-decoration:none}
       <div class="cf-row">
         <div class="cf-group">
           <label style="color:rgba(255,255,255,.7)">Full Name</label>
-          <input type="text" id="cf-name" placeholder="Name" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"/>
+          <input type="text" placeholder="Name" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"/>
         </div>
         <div class="cf-group">
           <label style="color:rgba(255,255,255,.7)">Email Address</label>
-          <input type="email" id="cf-email" placeholder="Email" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"/>
+          <input type="email" placeholder="Email" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"/>
         </div>
         <div class="cf-group cf-full">
           <label style="color:rgba(255,255,255,.7)">Subject</label>
-          <input type="text" id="cf-subject" placeholder="Subject" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"/>
+          <input type="text" placeholder="Subject" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"/>
         </div>
         <div class="cf-group cf-full">
           <label style="color:rgba(255,255,255,.7)">Message</label>
-          <textarea id="cf-message" rows="5" placeholder="Message" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"></textarea>
+          <textarea rows="5" placeholder="Message" style="border-bottom-color:rgba(255,255,255,.4);color:var(--white)"></textarea>
         </div>
       </div>
-      <button id="cf-submit" class="send-btn" style="background:var(--white);color:var(--terracotta)">Send Message</button>
-  <p id="cf-status" style="margin-top:.8rem;font-size:.85rem;font-weight:600;min-height:1.2rem"></p>
+      <button class="send-btn" style="background:var(--white);color:var(--terracotta)">Send Message</button>
     </div>
 
     <div class="contact-right">
@@ -430,8 +429,8 @@ footer a{color:var(--gold);text-decoration:none}
         <div class="contact-icon" style="border-color:var(--gold)">✉</div>
         <div class="contact-detail-text">
           <strong>Email</strong>
-          <a href="/cdn-cgi/l/email-protection#264f48404966554f48414e55524740404f48410845494b"><span class="__cf_email__" data-cfemail="d7beb9b1b897a4beb9b0bfa4a3b6b1b1beb9b0f9b4b8ba">[email&#160;protected]</span></a><br>
-          <a href="/cdn-cgi/l/email-protection#91e2f0f9f8fda8a4a1a0bfe2e2d1f6fcf0f8fdbff2fefc"><span class="__cf_email__" data-cfemail="e596848d8c89dcd0d5d4cb9696a58288848c89cb868a88">[email&#160;protected]</span></a>
+          <a href="mailto:info@singhstaffing.com">info@singhstaffing.com</a><br>
+          <a href="mailto:info@singhstaffing.com">info@singhstaffing.com</a>
         </div>
       </div>
     </div>
@@ -443,45 +442,59 @@ footer a{color:var(--gold);text-decoration:none}
   © 2026 Singh Staffing. All rights reserved. &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
-// Contact form submission
-const cfSubmit = document.getElementById('cf-submit');
-const cfStatus = document.getElementById('cf-status');
-if (cfSubmit) {
-  cfSubmit.addEventListener('click', async () => {
-    const name    = document.getElementById('cf-name').value.trim();
-    const email   = document.getElementById('cf-email').value.trim();
-    const subject = document.getElementById('cf-subject').value.trim();
-    const message = document.getElementById('cf-message').value.trim();
-    if (!name || !email || !message) {
-      cfStatus.style.color = '#c0623a';
-      cfStatus.textContent = 'Please fill in Name, Email and Message.';
-      return;
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+
+// Active nav link on scroll
+const sections=[...document.querySelectorAll('section,[id]')];
+const navLinks=document.querySelectorAll('nav ul a');
+window.addEventListener('scroll',()=>{
+  const pos=window.scrollY+100;
+  sections.forEach(s=>{
+    if(s.offsetTop<=pos && s.offsetTop+s.offsetHeight>pos){
+      navLinks.forEach(a=>a.classList.remove('active'));
+      const active=document.querySelector('nav ul a[href="#'+s.id+'"]');
+      if(active) active.classList.add('active');
     }
-    cfSubmit.disabled = true;
-    cfStatus.style.color = '#b5872a';
-    cfStatus.textContent = 'Sending...';
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, subject, message })
-      });
-      const data = await res.json();
-      if (data.success) {
-        cfStatus.style.color = '#10b981';
-        cfStatus.textContent = '✅ Message sent successfully!';
-        ['cf-name','cf-email','cf-subject','cf-message'].forEach(id => document.getElementById(id).value = '');
+  });
+});
+
+// Fade-in on scroll
+document.body.classList.add('js-loaded');
+const fadeEls=document.querySelectorAll('.fade-in');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.15});
+fadeEls.forEach(el=>observer.observe(el));
+
+// Contact form → /api/contact
+const sendBtn=document.querySelector('.send-btn');
+if(sendBtn){
+  sendBtn.addEventListener('click',async()=>{
+    const inputs=sendBtn.closest('.contact-left').querySelectorAll('input,textarea');
+    const [nameEl,emailEl,subjectEl,msgEl]=inputs;
+    const body={name:nameEl.value.trim(),email:emailEl.value.trim(),subject:subjectEl.value.trim(),message:msgEl.value.trim()};
+    if(!body.name||!body.email||!body.message){alert('Please fill in Name, Email and Message.');return;}
+    sendBtn.textContent='Sending…';sendBtn.disabled=true;
+    try{
+      const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      const d=await r.json();
+      if(d.success){
+        alert('✅ '+d.message);
+        inputs.forEach(i=>i.value='');
       } else {
-        cfStatus.style.color = '#c0623a';
-        cfStatus.textContent = '❌ ' + (data.message || 'Failed to send.');
+        alert('❌ '+d.error);
       }
-    } catch {
-      cfStatus.style.color = '#c0623a';
-      cfStatus.textContent = '❌ Network error. Please try again.';
-    }
-    cfSubmit.disabled = false;
+    }catch(err){alert('Something went wrong. Please try again.');}
+    sendBtn.textContent='Send Message';sendBtn.disabled=false;
   });
 }
-
 </script>
+</body>
+</html>
