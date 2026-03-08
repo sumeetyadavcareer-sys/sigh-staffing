@@ -1,36 +1,30 @@
 const express = require('express');
 const router  = express.Router();
-const auth    = require('../middleware/auth');
+const path    = require('path');
+const fs      = require('fs');
 
-// ── POST /api/admin/login ─────────────────────────────────────────
-// Simple username/password auth – returns a token stored in localStorage
+const CONTACTS_FILE = path.join(__dirname, '../data/contacts.json');
+
+function readJSON(file) {
+  if (!fs.existsSync(file)) return [];
+  try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return []; }
+}
+
+// POST /api/admin/login
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
-
-  if (
-    username === process.env.ADMIN_USERNAME &&
-    password === process.env.ADMIN_PASSWORD
-  ) {
-    // Simple base64 token (fine for small internal admin panel)
-    const token = Buffer.from(`${username}:${password}`).toString('base64');
-    return res.json({ success: true, token, message: 'Login successful' });
+  const adminUser = process.env.ADMIN_USERNAME || 'admin';
+  const adminPass = process.env.ADMIN_PASSWORD || 'Sigh@2026';
+  if (username === adminUser && password === adminPass) {
+    return res.json({ success: true, token: 'admin-token-singh-2026' });
   }
-
-  res.status(401).json({ success: false, message: 'Invalid username or password' });
+  res.status(401).json({ success: false, message: 'Invalid credentials' });
 });
 
-// ── GET /api/admin/stats ──────────────────────────────────────────
-router.get('/stats', auth, (req, res) => {
-  const { getJobs, getResumes, getContacts } = require('../middleware/dataStore');
-  res.json({
-    success: true,
-    data: {
-      totalJobs:     getJobs().length,
-      activeJobs:    getJobs().filter(j => j.active).length,
-      totalResumes:  getResumes().length,
-      totalContacts: getContacts().length
-    }
-  });
+// GET /api/admin/stats
+router.get('/stats', (req, res) => {
+  const contacts = readJSON(CONTACTS_FILE);
+  res.json({ success: true, data: { contacts: contacts.length } });
 });
 
 module.exports = router;
